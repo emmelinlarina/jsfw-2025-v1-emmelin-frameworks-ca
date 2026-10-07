@@ -2,7 +2,7 @@
 
 ## Shopping Store
 
-![Social Media App](documentation/images/JS_Frameworks-cp.jpeg)
+![Shopping Store](documentation/images/JS_Frameworks-cp.jpeg)
 
 An online shop built with React, TypeScript, and Vite.
 Users can browse products, search for items, view product details, add items to a cart, and complete a checkout flow.
