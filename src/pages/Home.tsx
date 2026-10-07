@@ -7,6 +7,7 @@ import styles from "./Home.module.css";
 function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [sortOption, setSortOption] = useState("newest");
 
@@ -15,8 +16,8 @@ function Home() {
       try {
         const data = await fetchProducts();
         setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
+      } catch {
+        setError("Failed to load products. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -29,14 +30,26 @@ function Home() {
     return <div>Loading...</div>;
   }
 
+  if (error) {
+    return (
+      <main className={styles.container}>
+        <p>{error}</p>
+      </main>
+    );
+  }
+
   const filteredProducts = products.filter((product) => {
     const searchValue = search.toLowerCase();
 
-    return (
+    const matchesSearch =
       product.title.toLowerCase().includes(searchValue) ||
       product.description.toLowerCase().includes(searchValue) ||
-      product.tags.some((tag) => tag.toLowerCase().includes(searchValue))
-    );
+      product.tags.some((tag) => tag.toLowerCase().includes(searchValue));
+
+    const matchesSale =
+      sortOption !== "sale" || product.discountedPrice < product.price;
+
+    return matchesSearch && matchesSale;
   });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
