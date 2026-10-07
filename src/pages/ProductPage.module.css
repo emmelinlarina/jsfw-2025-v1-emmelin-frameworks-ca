@@ -34,8 +34,11 @@
 }
 
 .rating {
-  font-size: 1.1rem;
-  margin: 1rem 0;
+  font-size: 1.5rem;
+  margin: 0.25rem 0;
+  line-height: 1;
+  letter-spacing: 0.1rem;
+  color: #f5a623;
 }
 
 .priceBox {
@@ -109,16 +112,17 @@
 .reviews h2 {
   margin-top: 0;
   color: rgb(29, 29, 29);
+  margin-bottom: 1rem;
 }
 
 .review {
-  border-top: 1px solid #ddd;
-  padding: 1rem 0;
+  border-top: 1px solid #e5e5e5;
+  padding: 1.25rem 0;
   font-size: 1rem;
 }
 
-.review:first-of-type {
-  border-top: none;
+.review:last-of-type {
+  border-bottom: none;
 }
 
 @media (max-width: 600px) {

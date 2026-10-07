@@ -9,7 +9,7 @@ import styles from "./ProductPage.module.css";
 function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
-
+  const [added, setAdded] = useState(false);
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -68,8 +68,15 @@ function ProductPage() {
             </strong>
           </div>
 
-          <button className={styles.button} onClick={() => addToCart(product)}>
-            Add to Cart
+          <button
+            className={styles.button}
+            onClick={() => {
+              addToCart(product);
+              setAdded(true);
+              setTimeout(() => setAdded(false), 1400);
+            }}
+          >
+            {added ? "Added!" : "Add to Cart"}
           </button>
 
           <h2>Tags</h2>
@@ -84,16 +91,27 @@ function ProductPage() {
       </div>
 
       <section className={styles.reviews}>
-        <h2>Reviews ⭐</h2>
+        <h2>Reviews</h2>
 
         {product.reviews.length > 0 ? (
-          product.reviews.map((review) => (
-            <article key={review.id} className={styles.review}>
-              <h3>{review.username}</h3>
-              <p>⭐ {review.rating}</p>
-              <p>{review.description}</p>
-            </article>
-          ))
+          product.reviews.map((review) => {
+            const roundedRating = Math.round(review.rating);
+            const stars =
+              "★".repeat(roundedRating) + "☆".repeat(5 - roundedRating);
+
+            return (
+              <article key={review.id} className={styles.review}>
+                <h3>{review.username}</h3>
+                <p
+                  className={styles.rating}
+                  aria-label={`${review.rating} out of 5 stars`}
+                >
+                  {stars}
+                </p>
+                <p>{review.description}</p>
+              </article>
+            );
+          })
         ) : (
           <p>No reviews yet.</p>
         )}

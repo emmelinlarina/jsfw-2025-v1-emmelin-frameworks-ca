@@ -15,6 +15,7 @@ function Header() {
           Contact
         </Link>
         <Link to="/cart" className={styles.cart}>
+          <i className="fa-solid fa-shopping-cart" aria-hidden="true"></i>
           Cart ({cartCount})
         </Link>
       </nav>
