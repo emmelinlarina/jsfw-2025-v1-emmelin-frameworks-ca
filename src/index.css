@@ -30,6 +30,10 @@
   }
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 #root {
   width: 1200px;
   max-width: 100%;
