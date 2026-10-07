@@ -9,7 +9,7 @@ import styles from "./ProductPage.module.css";
 function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
-
+  const [added, setAdded] = useState(false);
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -68,8 +68,15 @@ function ProductPage() {
             </strong>
           </div>
 
-          <button className={styles.button} onClick={() => addToCart(product)}>
-            Add to Cart
+          <button
+            className={styles.button}
+            onClick={() => {
+              addToCart(product);
+              setAdded(true);
+              setTimeout(() => setAdded(false), 1400);
+            }}
+          >
+            {added ? "Added!" : "Add to Cart"}
           </button>
 
           <h2>Tags</h2>

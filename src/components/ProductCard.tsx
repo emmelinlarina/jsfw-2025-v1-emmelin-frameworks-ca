@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import type { Product } from "../types/product";
 import { useCart } from "../context/useCart";
 import styles from "./ProductCard.module.css";
@@ -9,7 +10,7 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
-
+  const [added, setAdded] = useState(false);
   const hasDiscount = product.discountedPrice < product.price;
 
   const discountPercentage = Math.round(
@@ -55,10 +56,14 @@ export function ProductCard({ product }: ProductCardProps) {
               onClick={(e) => {
                 e.preventDefault();
                 addToCart(product);
+                setAdded(true);
+
+                setTimeout(() => setAdded(false), 1400);
               }}
             >
-              Add to Cart
+              {added ? "Added!" : "Add to Cart"}
             </button>
+
             <div className={styles.footer}>
               <div className={styles.tags}>
                 {product.tags.map((tag) => (
