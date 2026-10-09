@@ -31,3 +31,47 @@
 - Faster workflow during development
 - Reduced repetitive manual coding
 - Maintained understanding of the implemented code
+
+## Portfolio 2
+
+### Tool: ChatGPT
+
+Date: October 6–7, 2026
+
+#### Purpose:
+
+- Help with debugging and understanding existing React and TypeScript code
+
+- Guidance on fixing and improving API error handling
+
+- Guidance with user feedback
+
+- Help reviewing documentation and reflecting on project improvements
+
+#### Outcome:
+
+- Better understanding of the existing application
+
+- Improved problem-solving when revisiting older code
+
+- More polished and user-friendly functionality
+
+- Clearer project documentation
+
+### Tool: GitHub Copilot
+
+Date: October 6–7, 2026
+
+#### Purpose:
+
+- Code autocomplete and syntax suggestions
+
+- Assistance with repetitive code and smaller adjustments
+
+#### Outcome:
+
+- Faster workflow during development
+
+- Reduced repetitive manual coding
+
+AI tools were used as support during development. I reviewed and adapted the suggestions and remained responsible for the final implementation.
